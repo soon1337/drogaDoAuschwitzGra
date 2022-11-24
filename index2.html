@@ -1,0 +1,80 @@
+<!--Sterowanie divem za pomocą strzałek-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="d1"></div>
+    <p id="p1"></p>
+
+    <d id="d2">Teleportuj do Auschwitz</d>
+</body>
+</html>
+
+<!-- // <- 37 // /\ 38  // -> 39 // \/ 40 //  -->
+
+<script>
+    let div = document.getElementById("d1");
+    let left = 0, forward = 0;
+    let audio = new Audio("test.mp3");
+    let counter = 0;
+
+    document.onkeydown = function(key)
+    {
+        if(key.keyCode == 37)  //div idzie w lewo
+        {
+            left -= 10;
+            div.style.left = left + "px";
+        }
+
+        if(key.keyCode == 38)  //div idzie w górę
+        {
+            forward -= 10;
+            div.style.top = forward + "px";
+        }
+
+        if(key.keyCode == 39)  //div idzie w prawo
+        {
+            left += 10;
+            div.style.left = left + "px";
+            counter++;
+        }
+
+        if(key.keyCode == 40)  //div idzie w dół
+        {
+            forward += 10;
+            div.style.top = forward + "px";
+        }
+
+        if(counter == 30)
+        {
+            audio.play("test.mp3");
+            setInterval(function(){}, 2000);
+            window.open("index3.html")
+        }
+            
+    }
+</script>
+
+<style>
+    #d1
+    {
+        width: 20px;
+        height: 20px;
+        background-color: blue;
+        position: relative;
+    }
+
+    #d2
+    {
+        position: relative;
+        top: 500px;
+        left: 1200px;
+        background-color: gray;
+    }
+</style>
